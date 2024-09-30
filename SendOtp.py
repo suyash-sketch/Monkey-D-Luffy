@@ -59,7 +59,7 @@ def submit():
         session['user_data'] = {
             'username': username,
             'first_name': first_name,
-	        'last_name': last_name,
+	    'last_name': last_name,
             'birthdate': birthdate,
             'gender': gender,
             'email': email,
