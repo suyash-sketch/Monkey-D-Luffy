@@ -1,3 +1,4 @@
+
 from flask import Flask, request, render_template, redirect, url_for, session
 import mysql.connector
 import smtplib
@@ -44,7 +45,8 @@ def submit():
     logging.info(f"Request URL: {request.url}")
     if request.method == 'POST':
         username = request.form['username']
-        name = request.form['name']
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
         birthdate = request.form['birthdate']
         gender = request.form['gender']
         email = request.form['email']
@@ -56,7 +58,8 @@ def submit():
         # Store user data in session
         session['user_data'] = {
             'username': username,
-            'name': name,
+            'first_name': first_name,
+	        'last_name': last_name,
             'birthdate': birthdate,
             'gender': gender,
             'email': email,
@@ -75,8 +78,8 @@ def verify():
 
         if user_data and user_data['otp'] == entered_otp:
             cursor = db.cursor()
-            sql = "INSERT INTO users (username, name, birthdate, gender, email, password) VALUES (%s, %s, %s, %s, %s, %s)"
-            val = (user_data['username'], user_data['name'], user_data['birthdate'], user_data['gender'], user_data['email'], user_data['password'])
+            sql = "INSERT INTO users (username, first_name, last_name, birthdate, gender, email, password) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            val = (user_data['username'], user_data['first_name'], user_data['last_name'], user_data['birthdate'], user_data['gender'], user_data['email'], user_data['password'])
             cursor.execute(sql, val)
             db.commit()
 
