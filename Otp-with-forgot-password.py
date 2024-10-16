@@ -11,7 +11,7 @@ app.secret_key = 'your_secret_key'
 # Database connection
 db = mysql.connector.connect(
     host="localhost",
-    user="root",  
+    user="root",
     password="T1mex@_o6/2018",
     database="miniproject"
 )
@@ -71,10 +71,10 @@ def verify():
             cursor.execute(sql, val)
             db.commit()
             session.pop('user_data', None)
-            return "Account created and verified successfully!"
-        else:
-            return "Invalid OTP. Please try again."
+            return 'success'
+        return render_template('new-signin.html')
     return render_template('new-verify.html')
+
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -135,6 +135,15 @@ def forgot_password():
                 session.pop('reset_data', None)
                 return "Password reset successfully!"
     return render_template('forgot-password.html', step='1')
+
+@app.route('/get_users', methods=['GET'])
+def get_users():
+    cursor = db.cursor()
+    cursor.execute("SELECT first_name, last_name, email FROM users")
+    users = cursor.fetchall()
+    cursor.close()
+    cursor.close()
+    return render_template('db-index.html', users=users)
 
 if __name__ == '__main__':
     app.run(debug=True)
