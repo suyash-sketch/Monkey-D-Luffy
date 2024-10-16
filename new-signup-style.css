@@ -108,12 +108,15 @@ h2 {
     color: #e4e4e4;
 }
 
+.form-box .forget-h2 h2{
+    padding-left: 30px;
+}
+
 .logreg-box h2{
     font-size: 32px;
     margin-bottom: 20px;
     color: #e4e4e4;
-    padding-left: 38px;
-    padding-bottom: 24px;
+    padding-left: 116px;
 }
 .form-box .input-box{
     position: relative;
@@ -199,6 +202,29 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-size: 20px;
 }
 
+.form-box .remember-forget {
+    font-size: 14.5px;
+    display: flex;
+    font-weight: 500;
+    margin: -68px 0 15px;
+    padding-bottom: 49px;
+    padding-right: 40px;
+    justify-content: space-between;
+}
+.remember-forget label input{
+    accent-color: #e4e4e4;
+    margin-right: 3px;
+}
+
+.remember-forget a{
+    color: #e4e4e4;
+    text-decoration: none;
+}
+
+.remember-forget a:hover{
+    text-decoration: underline;
+}
+
 .btn {
     width: 30%;
     height: 45px;
@@ -246,6 +272,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     color: rgb(228, 228, 228);
     font-weight: 600;
     text-decoration: none;
+    padding-right: 54px;
 }
 
 .form-box .login-link{
@@ -260,4 +287,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     font-weight: 500;
     padding-left: 50px;
     margin-top: 25px;
+}
+
+/* Add styles for the pop-up message */
+#popup-message {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
