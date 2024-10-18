@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="#">
+        <title>Archive</title>
+    </head>
+    <body>
+        <div class="form-box">
+            <form id="archive-form" action="/archive" method="POST">
+                <div class="input-box">
+                    <input type="text" id="app_name" name="app_name" required>
+                    <label for="app_name">App Name</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="a_username" name="a_username" required>
+                    <label for="a_username">Username</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="a_password" name="a_password" required>
+                    <label for="a_password">Your Password</label>
+                </div>
+                <input type="submit" value="Save">
+            </form>
+        </div>
+    </body>
+</html>
