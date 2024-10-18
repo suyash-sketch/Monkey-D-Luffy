@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure Valt</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d3d3d3;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 20%;
+            background-color: #f0f0f0;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .sidebar .profile-icon {
+            font-size: 100px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .sidebar button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 18px;
+            border: 2px solid #000;
+            border-radius: 20px;
+            background-color: #fff;
+            position: relative;
+            cursor: pointer;
+        }
+        .sidebar button::before {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 5px;
+            background-color: #00ffff;
+            bottom: 10px;
+            left: 10%;
+            border-radius: 5px;
+        }
+        .main-content {
+            width: 80%;
+            padding: 20px;
+            text-align: center;
+        }
+        .main-content h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+        .main-content h2 {
+            font-size: 36px;
+            margin: 20px 0;
+        }
+        .main-content .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .main-content .buttons a {
+            width: 150px;
+            padding: 10px;
+            font-size: 18px;
+            border: 2px solid #000;
+            border-radius: 20px;
+            background-color: #fff;
+            position: relative;
+            text-decoration: none;
+            color: black;
+            text-align: center;
+            line-height: 25px;
+            cursor: pointer;
+        }
+        .main-content .buttons a::before {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 5px;
+            background-color: #00ffff;
+            bottom: 10px;
+            left: 10%;
+            border-radius: 5px;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .logo img {
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile-icon">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <button>Profile Insights</button>
+            <button>Subscriptions</button>
+            <button>Settings</button>
+            <button>About Us</button>
+            <button>Log-out</button>
+        </div>
+        <div class="main-content">
+            <h1>SECURE VALT</h1>
+            <div class="logo">
+                <img alt="Logo with a lock and key symbol" src="https://placehold.co/50x50"/>
+            </div>
+            <h2>Welcome,<br/>{{ username }}</h2>
+            <div class="buttons">
+                <a href="/archive">Archive</a>
+                <a href="/retrieve">Retrieve</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
