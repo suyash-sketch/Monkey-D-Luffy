@@ -36,6 +36,10 @@
             position: relative;
             cursor: pointer;
         }
+        a{
+            text-decoration: none;
+            color: #000;
+        }
         .sidebar button::before {
             content: '';
             position: absolute;
@@ -104,11 +108,14 @@
             <div class="profile-icon">
                 <i class="fas fa-user-circle"></i>
             </div>
-            <button>Profile Insights</button>
-            <button>Subscriptions</button>
-            <button>Settings</button>
-            <button>About Us</button>
-            <button>Log-out</button>
+            <div class="buttons">
+                <button><a href="/home">Home</a></button>
+                <button>Profile Insights</button>
+                <button><a href="/subscription">Subscriptions</a></button>
+                <button><a href="/setting">Settings</a></button>
+                <button><a href="/aboutus">About Us</a></button>
+                <button><a href="/submit">Log out</a></button>
+            </div>
         </div>
         <div class="main-content">
             <h1>SECURE VALT</h1>
