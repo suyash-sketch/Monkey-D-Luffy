@@ -1,0 +1,186 @@
+
+<html>
+ <head>
+  <title>
+   Secure Vault - Subscriptions
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: Arial, sans-serif;
+            background-color: #d3d3d3;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 20%;
+            background-color: #e0e0e0;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .sidebar button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid black;
+            border-radius: 20px;
+            background-color: white;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+        }
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+        .sidebar button::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            height: 5px;
+            background-color: #00ffcc;
+            border-radius: 0 0 0 20px;
+        }
+        .main-content {
+            width: 80%;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .main-content h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+        .main-content h2 {
+            font-size: 36px;
+            margin: 20px 0;
+        }
+        .main-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .main-content table, .main-content th, .main-content td {
+            border: 2px solid black;
+        }
+        .main-content th, .main-content td {
+            padding: 10px;
+            text-align: center;
+            background-color: white;
+        }
+        .main-content th {
+            background-color: #00ffcc;
+        }
+        .payment-section {
+            margin-top: 20px;
+        }
+        .payment-section button {
+            padding: 10px 20px;
+            border: 2px solid black;
+            border-radius: 20px;
+            background-color: white;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+        }
+        .payment-section button::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            height: 5px;
+            background-color: #00ffcc;
+            border-radius: 0 0 0 20px;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .logo img {
+            width: 50px;
+            height: 50px;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <div class="sidebar">
+    <img alt="User profile icon" height="100" src="https://storage.googleapis.com/a1aa/image/le5rwupEeGiLZUtxeP7IzW68X1vIH211BfXe1wY21olbokAdC.jpg" width="100"/>
+    <div class="buttons">
+        <button><a href="/home">Home</a></button>
+        <button>Profile Insights</button>
+        <button><a href="/subscription">Subscriptions</a></button>
+        <button><a href="/setting">Settings</a></button>
+        <button><a href="/aboutus">About Us</a></button>
+        <button><a href="/submit">Log out</a></button>
+    </div>
+   </div>
+   <div class="main-content">
+    <h1>SECURE VALT</h1>
+    <div class="logo">
+     <img alt="Lock icon with blue accents" height="50" src="https://storage.googleapis.com/a1aa/image/99rD7As17DKhJ9P1xLw5FPyedGpU76Y6R2WrwsfI07lClEoTA.jpg" width="50"/>
+    </div>
+    <h2>Subscriptions</h2>
+    <table>
+        <tr>
+            <th>Plan</th>
+            <th>Duration</th>
+            <th>Price (INR)</th>
+            <th>Features</th>
+            <th>Password Storage</th>
+        </tr>
+        <tr>
+            <td>Basic</td>
+            <td>1 Month</td>
+            <td>₹750</td>
+            <td>Access to basic features, 5GB storage, Email support</td>
+            <td>Up to 50 passwords</td>
+        </tr>
+        <tr>
+            <td>Standard</td>
+            <td>6 Months</td>
+            <td>₹3750</td>
+            <td>Access to all features, 50GB storage, Priority email support, Monthly backups</td>
+            <td>Up to 200 passwords</td>
+        </tr>
+        <tr>
+            <td> Premium</td>
+            <td>1 Year</td>
+            <td>₹6750</td>
+            <td>Access to all features, 200GB storage, 24/7 support, Free upgrades, Weekly backups, Custom domain</td>
+            <td>Up to 500 passwords</td>
+        </tr>
+        <tr>
+            <td>Enterprise</td>
+            <td>1 Year</td>
+            <td>₹15000</td>
+            <td>All Premium features, Unlimited storage, Dedicated account manager, Custom solutions, Enterprise-level security</td>
+            <td>Unlimited passwords</td>
+        </tr>
+    </table>
+    <div class="payment-section">
+     <button>
+      Proceed to Payment
+     </button>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
