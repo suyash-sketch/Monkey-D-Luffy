@@ -1,28 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <link rel="stylesheet" href="#">
-        <title>Retrieve</title>
-    </head>
-    <body>
-        <h2>Accounts</h2>
-    <table border="1">
-        <tr>
-            <th>App Name</th>
-            <th>Username</th>
-            <th>Password</th>
-        </tr>
-        {% for row in data %}
-        <tr>
-            <td>{{ row[0] }}</td>
-            <td>{{ row[1] }}</td>
-            <td>{{ row[2] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <br>
-    <a href="/">Back to Home</a>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrieve</title>
+    <!-- <link rel="stylesheet" href="retrieve.css"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d3d3d3;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 20%;
+            background-color: #f0f0f0;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .sidebar .profile-icon {
+            font-size: 100px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 18px;
+            border: 2px solid #000;
+            border-radius: 20px;
+            background-color: #fff;
+            position: relative;
+            cursor: pointer;
+        }
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+        .sidebar button::before {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 5px;
+            background-color: #00ffff;
+            bottom: 10px;
+            left: 10%;
+            border-radius: 5px;
+        }
+
+        .main-content {
+            width: 80%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .main-content h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+
+        .main-content h2 {
+            font-size: 36px;
+            margin: 20px 0;
+        }
+
+        .main-content .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .main-content .buttons a {
+            width: 150px;
+            padding: 10px;
+            font-size: 18px;
+            border: 2px solid #000;
+            border-radius: 20px;
+            background-color: #fff;
+            position: relative;
+            text-decoration: none;
+            color: black;
+            text-align: center;
+            line-height: 25px;
+            cursor: pointer;
+        }
+
+        .main-content .buttons a::before {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 5px;
+            background-color: #00ffff;
+            bottom: 10px;
+            left: 10%;
+            border-radius: 5px;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .logo img {
+            width: 50px;
+        }
+
+        /* Specific styles for retrieve.html */
+        .table-box {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        table, th, td {
+            border: 1px solid #000;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+
+        th {
+            background: #f0f0f0;
+        }
+
+        td {
+            background: #fff;
+        }
+
+        a.btn {
+            width: 30%;
+            height: 45px;
+            background: #c0b8b8;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #000;
+            font-weight: 500;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        a.btn:hover {
+            background-color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile-icon">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="buttons">
+                <button><a href="/home">Home</a></button>
+                <button>Profile Insights</button>
+                <button><a href="/subscription">Subscriptions</a></button>
+                <button><a href="/setting">Settings</a></button>
+                <button><a href="/aboutus">About Us</a></button>
+                <button><a href="/submit">Log out</a></button>
+            </div>
+        </div>
+        <div class="main-content">
+            <h1>RETRIEVE</h1>
+            <div class="form-box">
+                <h2>Accounts</h2>
+                <div class="table-box">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>App Name</th>
+                                <th>Username</th>
+                                <th>Password</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in data %}
+                            <tr>
+                                <td>{{ row[0] }}</td>
+                                <td>{{ row[1] }}</td>
+                                <td>{{ row[2] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <a href="/" class="btn">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
