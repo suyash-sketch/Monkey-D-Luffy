@@ -158,7 +158,7 @@ def archive_entry():
     val = (r_username, app_name, a_username, a_password)
     cursor.execute(sql, val)
     db.commit()
-    return "DATA added successfully"
+    return render_template('archive.html', message='DATA added successfully')
 
 @app.route('/archive')
 def archive_form():
@@ -178,6 +178,24 @@ def retrieve_data():
     data = cursor.fetchall()
     
     return render_template('retrieve.html', data=data)
+
+@app.route('/setting')
+def setting_page():
+    return render_template('setting.html')
+
+@app.route('/subscription')
+def subscription_page():
+    return render_template('subscription.html')
+
+@app.route('/aboutus')
+def aboutus_page():
+    return render_template('aboutus.html')
+
+@app.route('/home')
+def homescreen():
+    if 'username' not in session:
+        return redirect(url_for('login_page'))
+    return render_template('applock-home.html', username=session['username'])
 
 if __name__ == '__main__':
     app.run(debug=True)
