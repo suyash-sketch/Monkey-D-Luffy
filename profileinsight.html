@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure Valt</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/profileinsight-style.css')}}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile-icon">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="buttons">
+                <a href="/home">Home</a>
+                <a href="/profile">Profile Insights</a>
+                <a href="/subscription">Subscriptions</a>
+                <a href="/setting">Settings</a>
+                <a href="/aboutus">About Us</a>
+                <a href="/submit">Log out</a>
+            </div>
+        </div>
+        <div class="main-content">
+            <h1>SECURE VALT</h1>
+            <h2>Profile Insights</h2>
+            <!-- <div class="logo">
+                <img alt="Logo with a lock and key symbol" src="https://placehold.co/50x50"/>
+            </div> -->
+            <table>
+                <tr>
+                    <td><strong>Name</strong></td>
+                    <td>{{first_name}} {{last_name}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Username</strong></td>
+                    <td>{{username}}</td>
+                </tr>
+                <tr>
+                    <td><strong>DOB</strong></td>
+                    <td>{{birthdate}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Gender</strong></td>
+                    <td>{{gender}}</td>
+                </tr>
+                <tr>
+                    <td><strong>Email-Id</strong></td>
+                    <td>{{email}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html

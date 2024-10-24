@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrieve</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/retrieve-style.css')}}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile-icon">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="buttons">
+                <a href="/home">Home</a>
+                <a href="/profile">Profile Insights</a>
+                <a href="/subscription">Subscriptions</a>
+                <a href="/setting">Settings</a>
+                <a href="/aboutus">About Us</a>
+                <a href="/login">Log out</a>
+            </div>
+        </div>
+        <div class="main-content">
+            <!-- <h1>RETRIEVE</h1> -->
+            <div class="form-box">
+                <h2>Accounts</h2>
+                <div class="table-box">
+                    <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>App Name</th>
+                                <th>Username</th>
+                                <th>Password</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in data %}
+                            <tr>
+                                <td>{{ row[0] }}</td>
+                                <td>{{ row[1] }}</td>
+                                <td>{{ row[2] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+                <a href="/home" class="btn">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

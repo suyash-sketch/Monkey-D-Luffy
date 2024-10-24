@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verify</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/new-verify-style.css')}}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .popup {
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 20px;
+            background-color: #f9ed69;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <div class="content">
+            <h2>Welcome<br><span>To Our New Website</span>
+            </h2>
+            <div class="social-icons">
+                <a href="#"><i class='bx bxl-linkedin'></i></a>
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+            </div>
+        </div>
+        <div class="otp-box">
+            <div class="form-box">
+                <h2>Verify OTP</h2>
+                <form id="verify-form" action="/verify" method="post">
+                    <div class="input-box">
+                        <input type="text" id="otp" name="otp" required><br><br>
+                        <label for="otp">ENTER OTP</label>
+                        <span><i class='bx bxs-lock-alt'></i></span>
+                        <input class="btn" type="submit" value="Verify">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('verify-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            var otp = document.getElementById('otp').value;
+
+            // Perform an AJAX call to verify OTP
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/verify', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (xhr.status === 200 && xhr.responseText === 'success') {
+                    showPopup('OTP Verified! Signup Confirmed! Redirecting to signin....');
+                    // Optionally, submit the form after showing the popup
+                    setTimeout(() => {
+                        event.target.submit();
+                    }, 3000);
+                } else {
+                    showPopup('Invalid OTP. Please try again.');
+                }
+            };
+            xhr.send('otp=' + otp);
+        });
+
+        function showPopup(message) {
+            var popup = document.createElement('div');
+            popup.className = 'popup';
+            popup.innerText = message;
+            document.body.appendChild(popup);
+            setTimeout(function() {
+                document.body.removeChild(popup);
+            }, 3000); // Adjust the time as needed
+        }
+    </script>
+</body>
+</html>

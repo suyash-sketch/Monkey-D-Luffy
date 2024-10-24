@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/new-signup-style.css')}}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <div class="content">
+            <h2>Welcome<br><span>To Our New Website</span>
+            </h2>
+            
+            <div class="social-icons">
+                <a href="#"><i class='bx bxl-linkedin'></i></a>
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-instagram' ></i></a>
+                <a href="#"><i class='bx bxl-twitter' ></i></a>
+            </div>
+        </div>
+        <div class="logreg-box">
+            <div class="form-box">
+                <h2>Sign Up</h2>
+                <form id="signup-form" action="{{ url_for('submit') }}" method="POST">
+                    <!-- Step 1: Name -->
+                    <div class="step" id="step-1">
+                        <div class="input-box">
+                            <input type="text" id="first_name" name="first_name" required>
+                            <label for="first_name">First name</label>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" id="last_name" name="last_name"  required>
+                            <label for="last_name">Last name</label>
+                        </div>
+                        <button type="button" class="btn" onclick="nextStep(2)">Next</button>
+                    </div>
+                    <!-- Step 2: Birthdate and Gender -->
+                    <div class="step" id="step-2" style="display: none;">
+                        <div class="input-box">
+                            <input class="date-icon" type="date" id="birthdate" name="birthdate" required>
+                        </div>
+                        <div class="input-box">
+                            <select id="gender" name="gender" required>
+                                <option value="" disabled selected>Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn" onclick="nextStep(1)">Back</button>
+                        <button type="button" class="btn" onclick="nextStep(3)">Next</button>
+                    </div>
+                    <!-- Step 3: Username, Password, and Email -->
+                    <div class="step" id="step-3" style="display: none;">
+                        <div class="input-box">
+                            <input type="text" id="username" name="username" required>
+                            <label for="username">Username</label>
+                            <span class="icon-signup"><i class='bx bxs-user'></i></span>
+                        </div>
+                        <div class="input-box">
+                            <input type="password" id="password" name="password" required>
+                            <label for="password">Password</label>
+                            <span class="icon-signup"><i class='bx bxs-lock-alt'></i></span>
+                        </div>
+                        <div class="input-box">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Email</label>
+                            <span class="icon-signup"><i class='bx bxs-envelope'></i></span>
+                        </div>
+                        <button type="button" class="btn" onclick="nextStep(2)">Back</button>
+                        <button type="submit" class="btn">Submit</button>
+                    </div>
+                </form>
+                <div class="login-link">
+                    <p>Already have an account? <a class="signin-link" href="/login">Sign in</a></p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function nextStep(step) {
+            document.querySelectorAll('.step').forEach((element) => {
+                element.style.display = 'none';
+            });
+            document.getElementById('step-' + step).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
