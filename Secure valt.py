@@ -85,9 +85,14 @@ def login():
         user = cursor.fetchone()
         if user:
             session['username'] = username
-            return render_template('applock-home.html',username=username)
+            session['first_name'] = user[1]  # Assuming 1st index is first_name
+            session['last_name'] = user[2]   # Assuming 2nd index is last_name
+            session['birthdate'] = user[3]   # Assuming 3rd index is birthdate
+            session['gender'] = user[4]      # Assuming 4th index is gender
+            session['email'] = user[5]       # Assuming 5th index is email
+            return render_template('homescreen.html',username=username)
         else:
-            return render_template('invalid.html')
+            return render_template('new-signin.html', message='Invalid username or password')
     return render_template('new-signin.html')
 
 @app.route('/login')
@@ -183,6 +188,13 @@ def retrieve_data():
 def setting_page():
     return render_template('setting.html')
 
+@app.route('/profile')
+def profile_page():
+    if 'username' not in session:
+        return redirect(url_for('login_page'))
+    return render_template('profileinsight.html', first_name=session['first_name'], last_name=session['last_name'], username=session['username'], birthdate=session['birthdate'], gender=session['gender'], email=session['email'])
+    
+
 @app.route('/subscription')
 def subscription_page():
     return render_template('subscription.html')
@@ -195,7 +207,7 @@ def aboutus_page():
 def homescreen():
     if 'username' not in session:
         return redirect(url_for('login_page'))
-    return render_template('applock-home.html', username=session['username'])
+    return render_template('homescreen.html', username=session['username'])
 
 if __name__ == '__main__':
     app.run(debug=True)
