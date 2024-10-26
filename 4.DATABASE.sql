@@ -1,9 +1,9 @@
-//Create a database eg.miniproject
+--Create a database eg.miniproject
 
 CREATE DATABASE miniproject;
 
 
-//1.Create a table "users"
+--1.Create a table "users"
 CREATE TABLE users (
   iduser INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(50) NULL,
@@ -15,7 +15,10 @@ CREATE TABLE users (
   password VARCHAR(50) NULL
   );
 
-//2.create table "accounts"
+--2.ADD INDEX TO username in users TABLE--
+ALTER TABLE users ADD INDEX idx_username (username);
+
+--3.create table "accounts"
 CREATE TABLE accounts (
     id INT AUTO_INCREMENT PRIMARY KEY,
     app_name VARCHAR(50),
@@ -23,7 +26,7 @@ CREATE TABLE accounts (
     a_password VARCHAR(50)
 );
 
-//3.alter the table accounts
+--4.alter the table accounts
 ALTER TABLE accounts
 ADD COLUMN r_username VARCHAR(50);
 
