@@ -12,7 +12,7 @@ CREATE TABLE users (
   birthdate DATE NULL,
   email VARCHAR(50) NULL,
   username VARCHAR(50) NULL,
-  password VARCHAR(50) NULL,
+  password VARCHAR(50) NULL
   );
 
 //2.create table "accounts"
@@ -20,7 +20,7 @@ CREATE TABLE accounts (
     id INT AUTO_INCREMENT PRIMARY KEY,
     app_name VARCHAR(50),
     a_username VARCHAR(50),
-    a_password VARCHAR(50),
+    a_password VARCHAR(50)
 );
 
 //3.alter the table accounts
