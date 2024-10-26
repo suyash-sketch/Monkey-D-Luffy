@@ -12,7 +12,7 @@ app.secret_key = 'your_secret_key'
 db = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="T1mex@_o6/2018",
+    password="your_password",
     database="miniproject"
 )
 
@@ -20,8 +20,8 @@ def generate_otp():
     return ''.join(random.choices(string.digits, k=6))
 
 def send_otp(email, otp):
-    sender_email = "khandagalesuyash05@gmail.com"
-    sender_password = "kmnr taqd pxsv sxlj"
+    sender_email = "your email"
+    sender_password = "your_email_specific_password"  #kxne yatd polv sslj Something like this 
     subject = "Your OTP Code"
     body = f"Your OTP code is {otp}"
     message = f"Subject: {subject}\n\n{body}"
