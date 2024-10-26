@@ -25,7 +25,7 @@ CREATE TABLE accounts (
 
 //3.alter the table accounts
 ALTER TABLE accounts
-ADD COLUMN r_username VARCHAR(255);
+ADD COLUMN r_username VARCHAR(50);
 
 ALTER TABLE accounts
 ADD CONSTRAINT fk_user
