@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter OTP</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/retrieve-verify-style.css')}}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile-icon">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="buttons">
+                <a href="/home">Home</a>
+                <a href="/progile">Profile Insights</a>
+                <a href="/subscription">Subscriptions</a>
+                <a href="/setting">Settings</a>
+                <a href="/aboutus">About Us</a>
+                <a href="/login">Log out</a>
+            </div>
+        </div>
+    <div class="main-content">
+        <h2>Check your registered email address</h2>
+        <form method="POST">
+            <div class="input-box">
+                <!-- <label for="otp">OTP:</label> -->
+                <input type="text" id="otp" name="otp" required placeholder="Enter OTP">
+            </div>
+            <div class="buttons">
+                <button type="submit">Verify OTP</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const message = "{{ message }}";
+            if (message) {
+                alert(message);
+            }
+        });
+    </script>
+</body>
+</html>

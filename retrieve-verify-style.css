@@ -1,0 +1,129 @@
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            
+        }
+        body {
+            background: url('valtbackground.png') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #e4e4e4;
+        }
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 20%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .sidebar .profile-icon {
+            font-size: 100px;
+            margin-bottom: 20px;
+        }
+        .sidebar .buttons{
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: 100%;
+            margin-top: 135px;
+        }
+        .sidebar .buttons button,
+        .sidebar .buttons a {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 18px;
+            color: #e4e4e4;
+            background-color: transparent;
+            border: 2px solid #e4e4e4;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+        .sidebar .buttons button:hover,
+        .sidebar .buttons a:hover {
+            background-color: #e4e4e4;
+            color: black;
+        }
+        .main-content {
+            margin-left: 20%;
+            width: 80%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .main-content h1 {
+            font-size: 48px;
+            color: rgb(97, 97, 97);
+            margin-bottom: 20px;
+        }
+        .main-content h2 {
+            font-size: 37px;
+            transform: translate(170px,-175px);
+            margin-bottom: 20px;
+            text-align:center;
+            margin-left: -250px;
+            color: gray;
+        }
+        .main-content .buttons {
+            display: flex;
+            justify-content:center;
+            gap: 60px;
+            margin-top: 20px;
+            transform: translate(49px,60px);
+        
+        }
+        .main-content .buttons button {
+            width: 160px;
+            padding: 10px;
+            font-size: 18px;
+            background-color: red;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            transform: translate(5px,-40px);
+        }
+        .main-content .buttons button:hover {
+            background-color:#fe2020;
+        }
+        .input-box input {
+            width: 450px; 
+            padding: 15px;
+            margin-top: 20px;
+            border: 2px solid #e4e4e4; 
+            border-radius: 10px; 
+            outline: none; 
+            transition: border-color 0.3s ease; 
+            transform: translate(50px,-40px);
+        }
+        
+        .input-box input:focus {
+            border-color: rgb(74, 73, 73); 
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .logo img {
+            width: 50px;
+        }
+        
