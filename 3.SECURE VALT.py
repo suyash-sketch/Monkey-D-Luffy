@@ -20,8 +20,8 @@ def generate_otp():
     return ''.join(random.choices(string.digits, k=6))
 
 def send_otp(email, otp):
-    sender_email = "your email"
-    sender_password = "your_email_specific_password"  #kxne yatd polv sslj Something like this 
+    sender_email = "www.securevalt@gmail.com"
+    sender_password = "pjsi htiy taax iybz"
     subject = "Your OTP Code"
     body = f"Your OTP code is {otp}"
     message = f"Subject: {subject}\n\n{body}"
@@ -87,8 +87,8 @@ def login():
             session['username'] = username
             session['first_name'] = user[1]  # Assuming 1st index is first_name
             session['last_name'] = user[2]   # Assuming 2nd index is last_name
-            session['birthdate'] = user[3]   # Assuming 3rd index is birthdate
-            session['gender'] = user[4]      # Assuming 4th index is gender
+            session['gender'] = user[3]       # Assuming 4th index is gender
+            session['birthdate'] = user[4]   # Assuming 3rd index is birthdate
             session['email'] = user[5]       # Assuming 5th index is email
             return render_template('homescreen.html',username=username)
         else:
@@ -171,18 +171,52 @@ def archive_form():
         redirect(url_for('login_page'))
     return render_template('archive.html')
 
-@app.route('/retrieve', methods=['GET'])
+@app.route('/retrieve', methods=['GET', 'POST'])
 def retrieve_data():
     if 'username' not in session:
         return redirect(url_for('login_page'))
-
-    r_username = session['username']
-    cursor = db.cursor()
-    sql = "SELECT app_name, a_username, a_password FROM accounts WHERE r_username = %s"
-    cursor.execute(sql, (r_username,))
-    data = cursor.fetchall()
     
-    return render_template('retrieve.html', data=data)
+    if request.method == 'POST':
+        entered_otp = request.form['otp']
+        user_data = session.get('user_data')
+        if user_data and user_data['otp'] == entered_otp:
+            r_username = session['username']
+            cursor = db.cursor()
+            sql = "SELECT app_name, a_username, a_password FROM accounts WHERE r_username = %s"
+            cursor.execute(sql, (r_username,))
+            data = cursor.fetchall()
+            return render_template('retrieve.html', data=data, message='OTP Verified successfully Welcome')
+        else:
+            return "Invalid OTP. Please try again."
+
+    # For GET request, generate and send OTP
+    user_email = session.get('email')
+    otp = generate_otp()
+    send_otp(user_email, otp)
+    session['user_data'] = {'otp': otp}
+    return render_template('retrieve-verify.html')
+    
+
+
+@app.route('/delete', methods=['POST', 'GET'])
+def delete_data():
+    if 'username' not in session:
+        return redirect(url_for('login_page'))
+
+    if request.method == 'POST':
+        app_name = request.form['app_name']
+        a_username = request.form['a_username']
+        a_password = request.form['a_password']
+
+        cursor = db.cursor()
+        sql = "DELETE FROM accounts WHERE r_username = %s AND app_name = %s AND a_username = %s AND a_password = %s"
+        val = (session['username'], app_name, a_username, a_password)
+        cursor.execute(sql, val)
+        db.commit()
+        
+        return render_template('archive.html', message='Data deleted successfully')
+
+    return render_template('delete.html')
 
 @app.route('/setting')
 def setting_page():
@@ -211,3 +245,4 @@ def homescreen():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
